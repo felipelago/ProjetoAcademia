@@ -12,4 +12,5 @@ public interface AlunoRepository extends JpaRepository<Aluno, Long> {
 
 	List<Aluno> findByNome(String nome);
 	List<Aluno> findByNomeContains(String nome);
+	boolean existsByCpf(String cpf);
 }
