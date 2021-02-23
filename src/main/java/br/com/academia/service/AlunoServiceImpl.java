@@ -42,7 +42,7 @@ public class AlunoServiceImpl implements AlunoService {
 	@Override
 	public List<Aluno> listar() {
 		return repository.findAll();
-		
+
 	}
 
 	@Override

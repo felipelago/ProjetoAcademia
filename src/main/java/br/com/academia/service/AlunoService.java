@@ -24,7 +24,7 @@ public interface AlunoService {
 	 * @param idAluno, O aluno que será deletado
 	 * 
 	 */
-	public void deletar(Long idAluno);
+	public void deletar(Long idPacote);
 
 	/*
 	 * Listar os alunos

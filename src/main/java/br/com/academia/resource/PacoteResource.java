@@ -16,35 +16,35 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.academia.model.Aluno;
-import br.com.academia.service.AlunoService;
+import br.com.academia.model.Pacote;
+import br.com.academia.service.PacoteService;
 
-@RequestMapping("/alunos")
+@RequestMapping("/pacotes")
 @RestController
-public class AlunoResource {
+public class PacoteResource {
 	
 	@Autowired
-	AlunoService service;
-
+	PacoteService service;
+	
 	@PostMapping()
 	@ResponseBody
 	@ResponseStatus(code = HttpStatus.CREATED)
-	public ResponseEntity<?> salvar(@RequestBody Aluno m) {
-		return new ResponseEntity<Aluno>(this.service.salvar(m), HttpStatus.CREATED);
+	public ResponseEntity<?> salvar(@RequestBody Pacote m) {
+		return new ResponseEntity<Pacote>(this.service.salvar(m), HttpStatus.CREATED);
 	}
 
 	@GetMapping
 	@ResponseBody
 	@ResponseStatus(code = HttpStatus.OK)
 	public ResponseEntity<?> listar() {
-		return new ResponseEntity<List<Aluno>>(this.service.listar(), HttpStatus.OK);
+		return new ResponseEntity<List<Pacote>>(this.service.listar(), HttpStatus.OK);
 	}
 
 	@PutMapping
 	@ResponseBody
 	@ResponseStatus(code = HttpStatus.OK)
-	public ResponseEntity<?> editar(@RequestBody Aluno m) {
-		return new ResponseEntity<Aluno>(this.service.editar(m), HttpStatus.OK);
+	public ResponseEntity<?> editar(@RequestBody Pacote m) {
+		return new ResponseEntity<Pacote>(this.service.editar(m), HttpStatus.OK);
 	}
 
 	@DeleteMapping(value = "/{id}")
