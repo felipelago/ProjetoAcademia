@@ -7,6 +7,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import br.com.academia.error.ResourceNotFoundException;
 import br.com.academia.model.Aluno;
 import br.com.academia.repository.AlunoRepository;
 
@@ -24,10 +25,8 @@ public class AlunoServiceImpl implements AlunoService {
 	@Override
 	public Aluno salvar(Aluno aluno) {
 		if (repository.existsByCpf(aluno.getCpf())) {
-			System.out.println("CPF existente");
-			return null;
+			throw new ResourceNotFoundException("CPF Já existente");			
 		} else {
-
 			return repository.save(aluno);
 		}
 	}
@@ -36,7 +35,6 @@ public class AlunoServiceImpl implements AlunoService {
 	public void deletar(Long idAluno) {
 		repository.deleteById(idAluno);
 		System.out.println("Aluno deletado com sucesso !");
-
 	}
 
 	@Override

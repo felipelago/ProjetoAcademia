@@ -3,6 +3,7 @@ package br.com.academia.resource;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -38,6 +39,13 @@ public class AlunoResource {
 	@ResponseStatus(code = HttpStatus.OK)
 	public ResponseEntity<?> listar() {
 		return new ResponseEntity<List<Aluno>>(this.service.listar(), HttpStatus.OK);
+	}
+	
+	@GetMapping("/filtrar")
+	@ResponseBody
+	@ResponseStatus(code = HttpStatus.OK)
+	public ResponseEntity<?> listarPorNome(@Param("nome") String nome) {
+		return new ResponseEntity<List<Aluno>>(this.service.listarPorNome(nome), HttpStatus.OK);
 	}
 
 	@PutMapping

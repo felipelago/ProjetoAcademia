@@ -7,6 +7,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import br.com.academia.error.ResourceNotFoundException;
 import br.com.academia.model.Pacote;
 import br.com.academia.repository.PacoteRepository;
 
@@ -25,8 +26,7 @@ public class PacoteServiceImpl implements PacoteService {
 	@Override
 	public Pacote salvar(Pacote pacote) {
 		if (repository.existsByNome(pacote.getNome())) {
-			System.out.println("Pacote já cadastrado");
-			return null;
+			throw new ResourceNotFoundException("Pacote já existente!");			
 		} else {
 
 			return repository.save(pacote);
